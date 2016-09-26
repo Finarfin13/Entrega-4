@@ -10,3 +10,160 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+
+/*
+ * Copyright (C) 2016 Finarfin
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+package entrega4_finarfin;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Finarfin
+ */
+public class Entrega4_Finarfin {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        System.out.println("Bienvenido al programa de Finarfin");
+
+        Scanner as = new Scanner(System.in);
+        System.out.println("Ingrese el tamaño del vector");
+        int a = as.nextInt();
+        int qw[] = new int[a];
+
+        Scanner sd = new Scanner(System.in);
+        System.out.println("Ingrese los numeros frontera deseados");
+        int b = sd.nextInt();
+
+        Scanner df = new Scanner(System.in);
+        int c = df.nextInt();
+
+        System.out.println("El vector obtenido es: ");
+
+        if (b > c) {
+            for (int d = 0; d < a; d++) {
+                for (int f = 0; f < a; f++) {
+                    int e = (int) Math.floor(Math.random() * (b - c) + b);
+                    qw[f] = e;
+                }
+            }
+        }
+
+        if (b < c) {
+            for (int d = 0; d < a; d++) {
+                for (int f = 0; f < a; f++) {
+                    int e = (int) Math.floor(Math.random() * (c - b) + b);
+                    qw[f] = e;
+                }
+            }
+        }
+
+        System.out.print(Arrays.toString(qw));
+        System.out.println("");
+
+        System.out.println("Multiplicado por: ");
+
+        int we[][] = new int[a][a];
+
+        if (b > c) {
+            for (int d = 0; d < a; d++) {
+                for (int e = 0; e < a; e++) {
+                    int f = (int) Math.floor(Math.random() * (b - c) + c);
+                    we[d][e] = f;
+                }
+            }
+        }
+
+        if (b < c) {
+            for (int d = 0; d < a; d++) {
+                for (int e = 0; e < a; e++) {
+                    int f = (int) Math.floor(Math.random() * (c - b) + b);
+                    we[d][e] = f;
+                }
+            }
+        }
+
+        for (int d = 0; d < a; d++) {
+            for (int e = 0; e < a; e++) {
+                System.out.print(we[d][e] + " ");
+            }
+            System.out.println("");
+        }
+
+        System.out.println("El vector resultante es: ");
+        int h = 0;
+        int er[][] = new int[a][a];
+        for (int d = 0; d < a; d++) {
+            for (int e = 0; e < a; e++) {
+                for (int f = 0; f < a; f++) {
+                    if (f == e) {
+                        int g = qw[f] * we[d][e];
+                        h = h + g;
+                    } else {
+                        h = h;
+                    }
+                }
+            }
+            System.out.println(h);
+            h = 0;
+        }
+        System.out.println("");
+
+        System.out.println("El vector original: ");
+        System.out.print("");
+        for (int d = 0; d < a; d++) {
+            System.out.print(qw[d]);
+            System.out.print(", ");
+        }
+        System.out.println("ordenado es: ");
+
+        int d = 0;
+        int z = 0;
+        for (boolean ordenado = false; !ordenado;) {
+            for (int e = 0; e < a - 1; e++) {
+                if (qw[e] > qw[e + 1]) {
+                    int f = qw[e];
+                    qw[e] = qw[e + 1];
+                    qw[e + 1] = f;
+                    d = d + 1;
+                    z = z + 1;
+                }
+                if (d == 0) {
+                    ordenado = true;
+                }
+                d = 0;
+                if (z != 0) {
+                    System.out.println(e);
+                    e = -1;
+                    z = 0;
+                } else {
+                    e = e;
+                }
+            }
+        }
+        for (int e = 0; e < a; e++) {
+            System.out.print(qw[e]);
+            System.out.print(", ");
+        }
+    }
+
+}
